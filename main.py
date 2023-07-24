@@ -99,3 +99,8 @@ async def main(str: str):
   return k
 
 
+@app.get('*')
+async def main():
+    return "page does not exist"
+
+
