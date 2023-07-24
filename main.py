@@ -17,21 +17,21 @@ middleware = [
 
 app = FastAPI(middleware=middleware)
 
-headers = {
-    'authority': 'march-api1.vercel.app',
-    'accept': 'application/json, text/plain, */*',
-    'accept-language': 'en-US,en;q=0.5',
-    'origin': 'https://www.ashanime.pro',
-    'referer': 'https://www.ashanime.pro/',
-    'sec-ch-ua': '"Not/A)Brand";v="99", "Brave";v="115", "Chromium";v="115"',
-    'sec-ch-ua-mobile': '?1',
-    'sec-ch-ua-platform': '"Android"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'cross-site',
-    'sec-gpc': '1',
-    'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36',
-}
+# headers = {
+#     'authority': 'march-api1.vercel.app',
+#     'accept': 'application/json, text/plain, */*',
+#     'accept-language': 'en-US,en;q=0.5',
+#     'origin': 'https://www.ashanime.pro',
+#     'referer': 'https://www.ashanime.pro/',
+#     'sec-ch-ua': '"Not/A)Brand";v="99", "Brave";v="115", "Chromium";v="115"',
+#     'sec-ch-ua-mobile': '?1',
+#     'sec-ch-ua-platform': '"Android"',
+#     'sec-fetch-dest': 'empty',
+#     'sec-fetch-mode': 'cors',
+#     'sec-fetch-site': 'cross-site',
+#     'sec-gpc': '1',
+#     'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36',
+# }
 
 @app.get("/")
 async def main():
@@ -50,7 +50,7 @@ async def main(pgno:int):
 
   # response = requests.get('https://march-api1.vercel.app/meta/anilist/trending', params=params, headers=headers) 
   url=f"https://march-api1.vercel.app/meta/anilist/trending?page={pgno}&provider=gogoanime"
-  r=requests.get(url,headers=headers)
+  r=requests.get(url)
   k=r.json()
   return k
 
@@ -62,7 +62,7 @@ async def main(pgno:int):
 
   url=f"https://march-api1.vercel.app/meta/anilist/popular?page={pgno}&provider=gogoanime&perPage=20"
 
-  r=requests.get(url,headers=headers)
+  r=requests.get(url)
   k=r.json()
   return k
 
@@ -74,7 +74,7 @@ async def main(pgno:int =1):
 
 
   url=f"https://march-api1.vercel.app/meta/anilist/recent-episodes?page={pgno}&provider=gogoanime&perPage=20"
-  r=requests.get(url,headers=headers)
+  r=requests.get(url)
   k=r.json()
   return k
 
@@ -83,7 +83,7 @@ async def main(id:int,dub: str):
 
  
   url=f"https://march-api1.vercel.app/meta/anilist/info/{id}?fetchFiller=true&dub={dub}"
-  r=requests.get(url,headers=headers)
+  r=requests.get(url)
   k=r.json()
   return k
 
@@ -94,7 +94,7 @@ async def main(str: str):
 
  
   url=f"https://march-api1.vercel.app/meta/anilist/watch/{str}"
-  r=requests.get(url,headers=headers)
+  r=requests.get(url)
   k=r.json()
   return k
 
