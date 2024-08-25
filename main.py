@@ -139,6 +139,15 @@ async def main():
   k=r.json()
   return k
 
+@app.get('/search/{query}/{pgno}')
+async def main(query:str,pgno:int):
+  url=f"https://api-consumet-org-two-opal.vercel.app/meta/anilist/advanced-search?query={query}&page={pgno}&perPage=25&type=ANIME"
+ 
+  r=requests.get(url,headers=headers)
+  k=r.json()
+  return k
+
+# https://api-consumet-org-two-opal.vercel.app/meta/anilist/advanced-search?query=demon+slayer&page=1&perPage=25&type=ANIME
 @app.get('*')
 async def main():
     return "page does not exist"
